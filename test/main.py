@@ -19,13 +19,13 @@ class MeliTest(unittest.TestCase):
         self.assertEqual(self.meli.client_id, self.CLIENT_ID)
 
     def testClientSecret(self):
-        self.assertEqual(self.meli.client_id, self.CLIENT_ID)
+        self.assertEqual(self.meli.client_secret, self.CLIENT_SECRET)
 
     def testAccessToken(self):
-        self.assertEqual(self.meli.client_id, self.CLIENT_ID)
+        self.assertEqual(self.meli.access_token, self.ACCESS_TOKEN)
 
     def testRefreshToken(self):
-        self.assertEqual(self.meli.client_id, self.CLIENT_ID)
+        self.assertEqual(self.meli.refresh_token, self.REFRESH_TOKEN)
 
     #auth_url tests
     def testAuthUrl(self):
