@@ -4,6 +4,7 @@ import sys
 sys.path.append('../lib')
 from meli import Meli
 import requests
+import json
 
 class MeliTest(unittest.TestCase):
 
@@ -12,7 +13,10 @@ class MeliTest(unittest.TestCase):
         self.CLIENT_SECRET = "a secret"
         self.ACCESS_TOKEN = "a access_token"
         self.REFRESH_TOKEN = "a refresh_token"
+        self.NEW_ACCESS_TOKEN = "a new access_token"
+        self.NEW_REFRESH_TOKEN = "a new refresh_token"
         self.meli =  Meli(client_id=self.CLIENT_ID, client_secret=self.CLIENT_SECRET, access_token=self.ACCESS_TOKEN, refresh_token=self.REFRESH_TOKEN)
+
 
     #constructor tests
     def testClientId(self):
@@ -46,16 +50,33 @@ class MeliTest(unittest.TestCase):
                 response.status_code = 200
             else:
                 response.status_code = 403
+        elif re.search("/authorization", url):
+            response.status_code = 200
         else:
             response.status_code = 200
         return response
 
     def mockPost(url, path=None, body=None, params={},headers={}, data=None):
         response = requests.Response()
-        if "access_token" in params:
-            response.status_code = 200
+
+        #print params
+
+        if re.search("/oauth/token", url):
+            if "grant_type" not in params or "client_id" not in params or "client_secret" not in params:
+                response.status_code = 403
+            else:
+                if re.search("grant_type=authorization_code", params):
+                    content = {'access_token' : 'a access_token', 'refresh_token' : 'a refresh_token'}
+                elif re.search("grant_type=refresh_token", params):
+                    content = {'access_token' : 'a new access_token', 'refresh_token' : 'a new refresh_token'}
+                response._content = json.dumps(content)
+                response.status_code = 200
         else:
-            response.status_code = 403
+            if "access_token" in params:
+                response.status_code = 200
+            else:
+                response.status_code = 403
+
         return response
 
     def mockPut(url, path=None, body=None, params={},headers={}, data=None):
@@ -105,6 +126,20 @@ class MeliTest(unittest.TestCase):
     def testWithAccessToken(self):
         response = self.meli.get(path="/users/me",params={'access_token' : self.meli.access_token})
         self.assertEqual(response.status_code, requests.codes.ok)
+
+    #auth tests
+    def testAuthorize(self):
+        self.meli.access_token = None
+        self.meli.refresh_token = None
+        response = self.meli.authorize(code="a code from get param", redirect_URI="A redirect Uri")
+        self.assertEqual(self.meli.access_token, self.ACCESS_TOKEN)
+        self.assertEqual(self.meli.refresh_token, self.REFRESH_TOKEN)
+
+
+    def testDoRefreshToken(self):
+        response = self.meli.get_refresh_token()
+        self.assertEqual(self.meli.access_token, self.NEW_ACCESS_TOKEN)
+        self.assertEqual(self.meli.refresh_token, self.NEW_REFRESH_TOKEN)
 
 
 if __name__ == '__main__':

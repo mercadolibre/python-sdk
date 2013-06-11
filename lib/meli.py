@@ -53,7 +53,7 @@ class Meli(object):
         if self.refresh_token:
             params = {'grant_type' : 'refresh_token', 'client_id' : self.client_id, 'client_secret' : self.client_secret, 'refresh_token' : self.refresh_token}
             headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
-            uri = make_path(self.OAUTH_URL)
+            uri = self.make_path(self.OAUTH_URL)
 
             response = requests.post(uri, params=urlencode(params), headers=headers, data=params)
 
