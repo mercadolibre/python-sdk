@@ -59,8 +59,6 @@ class MeliTest(unittest.TestCase):
     def mockPost(url, path=None, body=None, params={},headers={}, data=None):
         response = requests.Response()
 
-        #print params
-
         if re.search("/oauth/token", url):
             if "grant_type" not in params or "client_id" not in params or "client_secret" not in params:
                 response.status_code = 403
