@@ -103,7 +103,7 @@ Don't forget to check out our examples codes in the folder [examples](https://gi
 
 ## Community
 
-You can contact us if you have questions using the standard communication channels described in the [developer's site](http://developers.mercadolibre.com/discuss)
+You can contact us if you have questions using the standard communication channels described in the [developer's site](http://developers.mercadolibre.com/community/)
 
 ## I want to contribute!
 
