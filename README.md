@@ -4,19 +4,16 @@ This is the official Python SDK for MercadoLibre's Platform.
 
 ## How do I install it?
 
-       clone repository
-       https://github.com/mercadolibre/python-sdk.git
+       pip install git+git://github.com/mercadolibre/python-sdk.git@master#egg=MELI-PYTHON-SDK
 
 ## How do I use it?
 
 The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
 
 ### Including the Lib
-Include the lib meli in your project
+Import Meli from meli
 
 ```python
-import sys
-sys.path.append('../lib')
 from meli import Meli
 ```
 Start the development!
@@ -108,5 +105,9 @@ You can contact us if you have questions using the standard communication channe
 ## I want to contribute!
 
 That is great! Just fork the project in github. Create a topic branch, write some code, and add some tests for your new code.
+
+Run tests:
+
+    python setup.py test
 
 Thanks for helping!
