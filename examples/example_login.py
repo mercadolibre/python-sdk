@@ -4,8 +4,6 @@
 from bottle import Bottle, run, template, route, request
 import json
 
-import sys
-sys.path.append('../lib')
 from meli import Meli
 
 meli = Meli(client_id=CLIENT_ID,client_secret=CLIENT_SECRET)

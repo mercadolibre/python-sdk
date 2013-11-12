@@ -1,12 +1,18 @@
  #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+__version__ = '1.0.0'
 
 import re
-import os
-import requests
 from urllib import urlencode
-from ConfigParser import SafeConfigParser
 import json
+
+import requests
+
+API_ROOT_URL = 'https://api.mercadolibre.com'
+AUTH_URL = 'https://auth.mercadolibre.com/authorization'
+OAUTH_URL = '/oauth/token'
+SDK_VERSION = 'MELI-PYTHON-SDK-{}'.format(__version__)
+
 
 class Meli(object):
     def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
@@ -15,13 +21,10 @@ class Meli(object):
         self.access_token = access_token
         self.refresh_token = refresh_token
 
-        parser = SafeConfigParser()
-        parser.read(os.path.dirname(os.path.abspath(__file__))+'/config.ini')
-
-        self.API_ROOT_URL = parser.get('config', 'api_root_url')
-        self.SDK_VERSION = parser.get('config', 'sdk_version')
-        self.AUTH_URL = parser.get('config', 'auth_url')
-        self.OAUTH_URL = parser.get('config', 'oauth_url')
+        self.API_ROOT_URL = API_ROOT_URL
+        self.SDK_VERSION = SDK_VERSION
+        self.AUTH_URL = AUTH_URL
+        self.OAUTH_URL = OAUTH_URL
 
     #AUTH METHODS
     def auth_url(self,redirect_URI):

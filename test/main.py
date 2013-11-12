@@ -1,7 +1,5 @@
 import unittest
 import re
-import sys
-sys.path.append('../lib')
 from meli import Meli
 import requests
 import json
