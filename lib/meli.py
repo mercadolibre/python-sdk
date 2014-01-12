@@ -14,6 +14,7 @@ class Meli(object):
         self.client_secret = client_secret
         self.access_token = access_token
         self.refresh_token = refresh_token
+        self.expires_in = None 
 
         parser = SafeConfigParser()
         parser.read(os.path.dirname(os.path.abspath(__file__))+'/config.ini')
@@ -43,6 +44,7 @@ class Meli(object):
                 self.refresh_token = response_info['refresh_token']
             else:
                 self.refresh_token = '' # offline_access not set up
+            self.expires_in = response_info['expires_in']
 
             return self.access_token
         else:
@@ -61,6 +63,7 @@ class Meli(object):
                 response_info = response.json()
                 self.access_token = response_info['access_token']
                 self.refresh_token = response_info['refresh_token']
+                self.expires_in = response_info['expires_in']
                 return self.access_token
             else:
                 # response code isn't a 200; raise an exception
