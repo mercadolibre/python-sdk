@@ -27,11 +27,12 @@ class Meli(object):
         self.OAUTH_URL = parser.get('config', 'oauth_url')
 
     #AUTH METHODS
-    def auth_url(self, redirect_URI):
+    def auth_url(self, redirect_URI, force_login=False):
         params = {
             'client_id': self.client_id,
             'response_type': 'code',
             'redirect_uri': redirect_URI,
+            'force_login': force_login,
         }
         url = self.AUTH_URL + '?' + urlencode(params)
         return url
