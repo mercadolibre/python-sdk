@@ -20,7 +20,7 @@ class Meli(object):
         parser = SafeConfigParser()
         parser.read(os.path.dirname(os.path.abspath(__file__))+'/config.ini')
 
-        self.requests_session = requests.Session()
+        self._requests = requests.Session()
         try:
             self.SSL_VERSION = parser.get('config', 'ssl_version')
             self._requests.mount('https://', SSLAdapter(ssl_version=getattr(ssl, self.SSL_VERSION)))
