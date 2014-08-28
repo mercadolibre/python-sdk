@@ -8,6 +8,7 @@ import json
 import os
 import re
 import requests
+import ssl
 
 class Meli(object):
     def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
