@@ -22,6 +22,14 @@ class Meli(object):
         self.SDK_VERSION = parser.get('config', 'sdk_version')
         self.AUTH_URL = parser.get('config', 'auth_url')
         self.OAUTH_URL = parser.get('config', 'oauth_url')
+        self.MAX_RETRIES = parser.get('config', 'max_retries')
+
+        self.initializeSession()
+
+    def initializeSession(self):
+        self.session = requests.Session()
+        self.session.mount("http://", requests.adapters.HTTPAdapter(self.MAX_RETRIES))
+        self.session.mount("https://", requests.adapters.HTTPAdapter(self.MAX_RETRIES))
 
     #AUTH METHODS
     def auth_url(self,redirect_URI):
@@ -34,7 +42,7 @@ class Meli(object):
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
         uri = self.make_path(self.OAUTH_URL)
 
-        response = requests.post(uri, params=urlencode(params), headers=headers)
+        response = self.session.post(uri, params=urlencode(params), headers=headers)
 
         if response.status_code == requests.codes.ok:
             response_info = response.json()
@@ -55,7 +63,7 @@ class Meli(object):
             headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
             uri = self.make_path(self.OAUTH_URL)
 
-            response = requests.post(uri, params=urlencode(params), headers=headers, data=params)
+            response = self.session.post(uri, params=urlencode(params), headers=headers, data=params)
 
             if response.status_code == requests.codes.ok:
                 response_info = response.json()
@@ -69,10 +77,11 @@ class Meli(object):
             raise Exception, "Offline-Access is not allowed."
 
     # REQUEST METHODS
+
     def get(self, path, params={}):
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
         uri = self.make_path(path)
-        response = requests.get(uri, params=urlencode(params), headers=headers)
+        response = self.session.get(uri, params=urlencode(params), headers=headers)
         return response
 
     def post(self, path, body=None, params={}):
@@ -81,7 +90,7 @@ class Meli(object):
         if body:
             body = json.dumps(body)
 
-        response = requests.post(uri, data=body, params=urlencode(params), headers=headers)
+        response = self.session.post(uri, data=body, params=urlencode(params), headers=headers)
         return response
 
     def put(self, path, body=None, params={}):
