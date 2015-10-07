@@ -14,7 +14,7 @@ The first thing to do is to instance a ```Meli``` class. You'll need to give a `
 ### Including the Lib
 Include the lib meli in your project
 
-## Very important ##
+### Attention
 Don't forget to set the authentication URL of your country in file lib/config.ini
 
 ```python
