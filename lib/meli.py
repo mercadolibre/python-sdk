@@ -1,12 +1,14 @@
  #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import re
-import os
-import requests
-from urllib import urlencode
 from ConfigParser import SafeConfigParser
+from ssl_helper import SSLAdapter
+from urllib import urlencode
 import json
+import os
+import re
+import requests
+import ssl
 
 class Meli(object):
     def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
@@ -19,6 +21,13 @@ class Meli(object):
 
         parser = SafeConfigParser()
         parser.read(os.path.dirname(os.path.abspath(__file__))+'/config.ini')
+
+        self._requests = requests.Session()
+        try:
+            self.SSL_VERSION = parser.get('config', 'ssl_version')
+            self._requests.mount('https://', SSLAdapter(ssl_version=getattr(ssl, self.SSL_VERSION)))
+        except:
+            self._requests = requests
 
         self.API_ROOT_URL = parser.get('config', 'api_root_url')
         self.SDK_VERSION = parser.get('config', 'sdk_version')
@@ -36,7 +45,7 @@ class Meli(object):
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
         uri = self.make_path(self.OAUTH_URL)
 
-        response = requests.post(uri, params=urlencode(params), headers=headers)
+        response = self._requests.post(uri, params=urlencode(params), headers=headers)
 
         if response.status_code == requests.codes.ok:
             response_info = response.json()
@@ -58,7 +67,7 @@ class Meli(object):
             headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
             uri = self.make_path(self.OAUTH_URL)
 
-            response = requests.post(uri, params=urlencode(params), headers=headers, data=params)
+            response = self._requests.post(uri, params=urlencode(params), headers=headers, data=params)
 
             if response.status_code == requests.codes.ok:
                 response_info = response.json()
@@ -76,7 +85,7 @@ class Meli(object):
     def get(self, path, params={}):
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
         uri = self.make_path(path)
-        response = requests.get(uri, params=urlencode(params), headers=headers)
+        response = self._requests.get(uri, params=urlencode(params), headers=headers)
         return response
 
     def post(self, path, body=None, params={}):
@@ -85,7 +94,7 @@ class Meli(object):
         if body:
             body = json.dumps(body)
 
-        response = requests.post(uri, data=body, params=urlencode(params), headers=headers)
+        response = self._requests.post(uri, data=body, params=urlencode(params), headers=headers)
         return response
 
     def put(self, path, body=None, params={}):
@@ -94,19 +103,19 @@ class Meli(object):
         if body:
             body = json.dumps(body)
 
-        response = requests.put(uri, data=body, params=urlencode(params), headers=headers)
+        response = self._requests.put(uri, data=body, params=urlencode(params), headers=headers)
         return response
 
     def delete(self, path, params={}):
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
         uri = self.make_path(path)
-        response = requests.delete(uri, params=params, headers=headers)
+        response = self._requests.delete(uri, params=params, headers=headers)
         return response
 
     def options(self, path, params={}):
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
         uri = self.make_path(path)
-        response = requests.options(uri, params=urlencode(params), headers=headers)
+        response = self._requests.options(uri, params=urlencode(params), headers=headers)
         return response
 
     def make_path(self, path, params={}):
