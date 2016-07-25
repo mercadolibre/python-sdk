@@ -1,11 +1,13 @@
+from meli_client import meli
 
-from meli import Meli
 
 def main():
-    meli = Meli(client_id=CLIENT_ID,client_secret=CLIENT_SECRET, access_token=ACCESS_TOKEN, refresh_token=REFRESH_TOKEN,site_id='MLA')
+    meli_obj = meli.Meli(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, access_token=ACCESS_TOKEN,
+                         refresh_token=REFRESH_TOKEN, site_id='MLA')
 
-    response = meli.get("/items/ITEM_ID")
+    response = meli_obj.get("/items/ITEM_ID")
     print response.content
+
 
 if __name__ == "__main__":
     main()
