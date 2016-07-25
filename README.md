@@ -4,30 +4,39 @@ This is the official Python SDK for MercadoLibre's Platform.
 
 ## How do I install it?
 
-       clone repository
-       https://github.com/mercadolibre/python-sdk.git
+       $ pip install meli_client
 
 ## How do I use it?
 
-The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
+The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId```, a ```clientSecret``` and a ```site_id``` depending on the country for which you wish to develop. 
+You can obtain both after creating your own application. 
+For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
+
+You must use one of the following site_id's or it'll default to MLA
+
+
+* MLA for Argentina
+* MLB for Brazil
+* MCO for Colombia
+* MCR for Costa Rica
+* MEC for Ecuador
+* MLC for Chile
+* MLM for Mexico
+* MLU for Uruguay
+* MLV for Venezuela
+* MPA for Panama
+* MPE for Peru
+* MPT for Portugal
+* MRD for the Dominican Republic
+ 
 
 ### Including the Lib
 Include the lib meli in your project
 
-### Attention
-Don't forget to set the authentication URL of your country in file lib/config.ini
-
-```python
-import sys
-sys.path.append('../lib')
-from meli import Meli
-```
-Start the development!
-
 ### Create an instance of Meli class
 Simple like this
 ```python
-meli = Meli(client_id=1234, client_secret="a secret")
+meli = Meli(client_id=1234, client_secret="a secret",site_id="MLA")
 ```
 With this instance you can start working on MercadoLibre's APIs.
 
