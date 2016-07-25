@@ -8,7 +8,7 @@ import sys
 sys.path.append('../lib')
 from meli import Meli
 
-meli = Meli(client_id=CLIENT_ID,client_secret=CLIENT_SECRET)
+meli = Meli(client_id=CLIENT_ID,client_secret=CLIENT_SECRET,site_id='MLA')
 
 app = Bottle()
 

@@ -1,26 +1,40 @@
- #!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from ConfigParser import SafeConfigParser
-from ssl_helper import SSLAdapter
-from urllib import urlencode
 import json
 import os
 import re
-import requests
 import ssl
+from ConfigParser import SafeConfigParser
+from urllib import urlencode
+
+import requests
+
+from ssl_helper import SSLAdapter
+
 
 class Meli(object):
-    def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
+    def __init__(self, client_id, client_secret, access_token=None, refresh_token=None, site_id='MLA'):
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = access_token
         self.refresh_token = refresh_token
-        self.expires_in = None 
-  
-
+        self.expires_in = None
+        auth_urls = {'MLA': "https://auth.mercadolibre.com.ar",  # Argentina
+                     'MLB': "https://auth.mercadolivre.com.br",  # Brasil
+                     'MCO': "https://auth.mercadolibre.com.co",  # Colombia
+                     'MCR': "https://auth.mercadolibre.com.cr",  # Costa Rica
+                     'MEC': "https://auth.mercadolibre.com.ec",  # Ecuador
+                     'MLC': "https://auth.mercadolibre.cl",  # Chile
+                     'MLM': "https://auth.mercadolibre.com.mx",  # Mexico
+                     'MLU': "https://auth.mercadolibre.com.uy",  # Uruguay
+                     'MLV': "https://auth.mercadolibre.com.ve",  # Venezuela
+                     'MPA': "https://auth.mercadolibre.com.pa",  # Panama
+                     'MPE': "https://auth.mercadolibre.com.pe",  # Peru
+                     'MPT': "https://auth.mercadolibre.com.pt",  # Prtugal
+                     'MRD': "https://auth.mercadolibre.com.do"}  # Dominicana
         parser = SafeConfigParser()
-        parser.read(os.path.dirname(os.path.abspath(__file__))+'/config.ini')
+        parser.read(os.path.dirname(os.path.abspath(__file__)) + '/config.ini')
 
         self._requests = requests.Session()
         try:
@@ -31,18 +45,19 @@ class Meli(object):
 
         self.API_ROOT_URL = parser.get('config', 'api_root_url')
         self.SDK_VERSION = parser.get('config', 'sdk_version')
-        self.AUTH_URL = parser.get('config', 'auth_url')
+        self.AUTH_URL = auth_urls.get(site_id.upper(), site_id['MLA'])
         self.OAUTH_URL = parser.get('config', 'oauth_url')
 
-    #AUTH METHODS
-    def auth_url(self,redirect_URI):
-        params = {'client_id':self.client_id,'response_type':'code','redirect_uri':redirect_URI}
-        url = self.AUTH_URL  + '/authorization' + '?' + urlencode(params)
+    # AUTH METHODS
+    def auth_url(self, redirect_URI):
+        params = {'client_id': self.client_id, 'response_type': 'code', 'redirect_uri': redirect_URI}
+        url = self.AUTH_URL + '/authorization' + '?' + urlencode(params)
         return url
 
     def authorize(self, code, redirect_URI):
-        params = { 'grant_type' : 'authorization_code', 'client_id' : self.client_id, 'client_secret' : self.client_secret, 'code' : code, 'redirect_uri' : redirect_URI}
-        headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        params = {'grant_type': 'authorization_code', 'client_id': self.client_id, 'client_secret': self.client_secret,
+                  'code': code, 'redirect_uri': redirect_URI}
+        headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(self.OAUTH_URL)
 
         response = self._requests.post(uri, params=urlencode(params), headers=headers)
@@ -53,7 +68,7 @@ class Meli(object):
             if 'refresh_token' in response_info:
                 self.refresh_token = response_info['refresh_token']
             else:
-                self.refresh_token = '' # offline_access not set up
+                self.refresh_token = ''  # offline_access not set up
                 self.expires_in = response_info['expires_in']
 
             return self.access_token
@@ -63,8 +78,9 @@ class Meli(object):
 
     def get_refresh_token(self):
         if self.refresh_token:
-            params = {'grant_type' : 'refresh_token', 'client_id' : self.client_id, 'client_secret' : self.client_secret, 'refresh_token' : self.refresh_token}
-            headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+            params = {'grant_type': 'refresh_token', 'client_id': self.client_id, 'client_secret': self.client_secret,
+                      'refresh_token': self.refresh_token}
+            headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
             uri = self.make_path(self.OAUTH_URL)
 
             response = self._requests.post(uri, params=urlencode(params), headers=headers, data=params)
@@ -83,13 +99,13 @@ class Meli(object):
 
     # REQUEST METHODS
     def get(self, path, params={}):
-        headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(path)
         response = self._requests.get(uri, params=urlencode(params), headers=headers)
         return response
 
     def post(self, path, body=None, params={}):
-        headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(path)
         if body:
             body = json.dumps(body)
@@ -98,7 +114,7 @@ class Meli(object):
         return response
 
     def put(self, path, body=None, params={}):
-        headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(path)
         if body:
             body = json.dumps(body)
@@ -107,13 +123,13 @@ class Meli(object):
         return response
 
     def delete(self, path, params={}):
-        headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(path)
         response = self._requests.delete(uri, params=params, headers=headers)
         return response
 
     def options(self, path, params={}):
-        headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        headers = {'Accept': 'application/json', 'User-Agent': self.SDK_VERSION, 'Content-type': 'application/json'}
         uri = self.make_path(path)
         response = self._requests.options(uri, params=urlencode(params), headers=headers)
         return response
