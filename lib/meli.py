@@ -29,7 +29,8 @@ class Meli(object):
         except:
             self._requests = requests
         if proxies:
-            self._requests.proxies = {"https": "https://user:password@proxy.com:port"}
+            # proxies = {"https": "https://user:password@proxy.com:port"}
+            self._requests.proxies = proxies
         self.API_ROOT_URL = parser.get('config', 'api_root_url')
         self.SDK_VERSION = parser.get('config', 'sdk_version')
         self.AUTH_URL = parser.get('config', 'auth_url')
