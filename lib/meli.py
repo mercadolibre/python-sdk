@@ -28,7 +28,7 @@ class Meli(object):
             self._requests.mount('https://', SSLAdapter(ssl_version=getattr(ssl, self.SSL_VERSION)))
         except:
             self._requests = requests
-        if proxies:
+        if isinstance(proxies, dict) :
             # proxies = {"https": "https://user:password@proxy.com:port"}
             self._requests.proxies = proxies
         self.API_ROOT_URL = parser.get('config', 'api_root_url')
