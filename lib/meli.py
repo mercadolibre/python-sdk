@@ -11,7 +11,7 @@ import requests
 import ssl
 
 class Meli(object):
-    def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
+    def __init__(self, client_id, client_secret, access_token=None, refresh_token=None, proxies=None):
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = access_token
@@ -28,7 +28,8 @@ class Meli(object):
             self._requests.mount('https://', SSLAdapter(ssl_version=getattr(ssl, self.SSL_VERSION)))
         except:
             self._requests = requests
-
+        if proxies:
+            self._requests.proxies = {"https": "https://user:password@proxy.com:port"}
         self.API_ROOT_URL = parser.get('config', 'api_root_url')
         self.SDK_VERSION = parser.get('config', 'sdk_version')
         self.AUTH_URL = parser.get('config', 'auth_url')
