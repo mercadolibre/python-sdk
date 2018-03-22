@@ -16,8 +16,8 @@ class Meli(object):
         self.client_secret = client_secret
         self.access_token = access_token
         self.refresh_token = refresh_token
-        self.expires_in = None 
-  
+        self.expires_in = None
+
 
         parser = SafeConfigParser()
         parser.read(os.path.dirname(os.path.abspath(__file__))+'/config.ini')
@@ -82,14 +82,20 @@ class Meli(object):
             raise Exception, "Offline-Access is not allowed."
 
     # REQUEST METHODS
-    def get(self, path, params={}):
+    def get(self, path, params=None, extra_headers=None):
+        params = params or {}
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        if extra_headers:
+            headers.update(extra_headers)
         uri = self.make_path(path)
         response = self._requests.get(uri, params=urlencode(params), headers=headers)
         return response
 
-    def post(self, path, body=None, params={}):
+    def post(self, path, body=None, params=None, extra_headers=None):
+        params = params or {}
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        if extra_headers:
+            headers.update(extra_headers)
         uri = self.make_path(path)
         if body:
             body = json.dumps(body)
@@ -97,8 +103,11 @@ class Meli(object):
         response = self._requests.post(uri, data=body, params=urlencode(params), headers=headers)
         return response
 
-    def put(self, path, body=None, params={}):
+    def put(self, path, body=None, params=None, extra_headers=None):
+        params = params or {}
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        if extra_headers:
+            headers.update(extra_headers)
         uri = self.make_path(path)
         if body:
             body = json.dumps(body)
@@ -106,19 +115,26 @@ class Meli(object):
         response = self._requests.put(uri, data=body, params=urlencode(params), headers=headers)
         return response
 
-    def delete(self, path, params={}):
+    def delete(self, path, params=None, extra_headers=None):
+        params = params or {}
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        if extra_headers:
+            headers.update(extra_headers)
         uri = self.make_path(path)
         response = self._requests.delete(uri, params=params, headers=headers)
         return response
 
-    def options(self, path, params={}):
+    def options(self, path, params=None, extra_headers=None):
+        params = params or {}
         headers = {'Accept': 'application/json', 'User-Agent':self.SDK_VERSION, 'Content-type':'application/json'}
+        if extra_headers:
+            headers.update(extra_headers)
         uri = self.make_path(path)
         response = self._requests.options(uri, params=urlencode(params), headers=headers)
         return response
 
-    def make_path(self, path, params={}):
+    def make_path(self, path, params=None):
+        params = params or {}
         # Making Path and add a leading / if not exist
         if not (re.search("^http", path)):
             if not (re.search("^\/", path)):
