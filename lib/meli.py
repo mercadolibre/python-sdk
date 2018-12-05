@@ -136,10 +136,10 @@ class Meli(object):
     def make_path(self, path, params=None):
         params = params or {}
         # Making Path and add a leading / if not exist
-        if not (re.search("^http", path)):
-            if not (re.search("^\/", path)):
-                path = "/" + path
-            path = self.API_ROOT_URL + path
+        if not (re.search("^\/", path)):
+            path = "/" + path
+        path = self.API_ROOT_URL + path
         if params:
             path = path + "?" + urlencode(params)
+
         return path
