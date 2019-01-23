@@ -47,7 +47,7 @@ class Meli(object):
 
         response = self._requests.post(uri, params=urlencode(params), headers=headers)
 
-        if response.status_code == requests.codes.ok:
+        if response.ok:
             response_info = response.json()
             self.access_token = response_info['access_token']
             if 'refresh_token' in response_info:
@@ -69,7 +69,7 @@ class Meli(object):
 
             response = self._requests.post(uri, params=urlencode(params), headers=headers, data=params)
 
-            if response.status_code == requests.codes.ok:
+            if response.ok:
                 response_info = response.json()
                 self.access_token = response_info['access_token']
                 self.refresh_token = response_info['refresh_token']
