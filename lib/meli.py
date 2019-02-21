@@ -1,14 +1,16 @@
  #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from ConfigParser import SafeConfigParser
+from configparser import SafeConfigParser
 from ssl_helper import SSLAdapter
-from urllib import urlencode
+from urllib.parse import urlencode
 import json
 import os
 import re
 import requests
 import ssl
+
+__all__ = [ 'Meli' ]
 
 class Meli(object):
     def __init__(self, client_id, client_secret, access_token=None, refresh_token=None):
@@ -79,7 +81,7 @@ class Meli(object):
                 # response code isn't a 200; raise an exception
                 response.raise_for_status()
         else:
-            raise Exception, "Offline-Access is not allowed."
+            raise Exception( "Offline-Access is not allowed." )
 
     # REQUEST METHODS
     def get(self, path, params=None, extra_headers=None):
@@ -136,7 +138,7 @@ class Meli(object):
     def make_path(self, path, params=None):
         params = params or {}
         # Making Path and add a leading / if not exist
-        if not (re.search("^\/", path)):
+        if not (re.search(r"^\/", path)):
             path = "/" + path
         path = self.API_ROOT_URL + path
         if params:
