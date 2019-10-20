@@ -18,9 +18,8 @@ Include the lib meli in your project
 Don't forget to set the authentication URL of your country in file lib/config.ini
 
 ```python
-import sys
-sys.path.append('../lib')
-from meli import Meli
+
+from lib.meli import Meli
 ```
 Start the development!
 
