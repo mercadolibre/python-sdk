@@ -1,115 +1,86 @@
-# MercadoLibre's Python SDK
 
-This is the official Python SDK for MercadoLibre's Platform.
+<h1 align="center">
+  <a href="https://developers.mercadolibre.com">
+    <img src="https://user-images.githubusercontent.com/1153516/29861072-689ec57e-8d3e-11e7-8368-dd923543258f.jpg" alt="Mercado Libre Developers" width="230"></a>
+  </a>
+  <br><br>
+  MercadoLibre's Python SDK
+  <br>
+</h1>
 
-## How do I install it?
+<h4 align="center">This is the official Python SDK for MercadoLibre's Platform.</h4>
 
-       clone repository
-       https://github.com/mercadolibre/python-sdk.git
 
-## How do I use it?
+## Requirements.
 
-The first thing to do is to instance a ```Meli``` class. You'll need to give a ```clientId``` and a ```clientSecret```. You can obtain both after creating your own application. For more information on this please read: [creating an application](http://developers.mercadolibre.com/application-manager/)
+Python 2.7 and 3.4+
 
-### Including the Lib
-Include the lib meli in your project
+## Installation
 
-### Attention
-Don't forget to set the authentication URL of your country in file lib/config.ini
+### pip install
 
-```python
-import sys
-sys.path.append('../lib')
-from meli import Meli
+If the python package is hosted on a repository, you can install directly using:
+
+```sh
+pip install git+https://github.com/mercadolibre/python-sdk.git
 ```
-Start the development!
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/mercadolibre/python-sdk.git`)
 
-### Create an instance of Meli class
-Simple like this
+Then import the package:
 ```python
-meli = Meli(client_id=1234, client_secret="a secret")
-```
-With this instance you can start working on MercadoLibre's APIs.
-
-There are some design considerations worth to mention.
-
-1. This SDK is just a thin layer on top of an http client to handle all the OAuth WebServer flow for you.
-
-2. There is JSON parsing. this SDK will include [json](http://docs.python.org/2/library/json.html) for internal usage.
-
-3. If you already have the access_token and the refresh_token you can pass in the constructor
-
-```python
-meli = Meli(client_id=1234, client_secret="a secret", access_token="Access_Token", refresh_token="Refresh_Token")
+import meli
 ```
 
-## How do I redirect users to authorize my application?
+### Setuptools
 
-This is a 2 step process.
+Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 
-First get the link to redirect the user. This is very easy! Just:
+```sh
+python setup.py install --user
+```
+(or `sudo python setup.py install` to install the package for all users)
 
+Then import the package:
 ```python
-redirectUrl = meli.auth_url(redirect_URI="http://somecallbackurl")
+import meli
 ```
 
-This will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
-
-Once the user is redirected to your callback url, you'll receive in the query string, a parameter named ```code```. You'll need this for the second part of the process.
+## Usage
 
 ```python
-meli.authorize(code="the received code", redirect_URI="http://somecallbackurl")
+from __future__ import print_function
+import time
+import meli
+from meli.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.mercadolibre.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = meli.Configuration(
+    host = "https://api.mercadolibre.com"
+)
+
+
+# Enter a context with an instance of the API client
+with meli.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = meli.ItemsApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # Return a Item.
+        api_instance.items_id_get(id)
+    except ApiException as e:
+        print("Exception when calling ItemsApi->items_id_get: %s\n" % e)
 ```
 
-This will get an ```access_token``` and a ```refresh_token``` (is case your application has the ```offline_access```) for your application and your user.
+## Documentation & Important notes
 
-At this stage your are ready to make call to the API on behalf of the user.
+##### The URIs are relative to https://api.mercadolibre.com
 
-#### Making GET calls
+##### The Authorization URL: https://auth.mercadolibre.com.ar/authorization
 
-```python
-params = {'access_token' : meli.access_token}
-response = meli.get(path="/users/me", params=params)
-```
+#####  All docs for the library are located [here](https://github.com/mercadolibre/python-sdk/tree/master/docs)
 
-#### Making POST calls
+#####  Check out our examples codes in the folder [examples](https://github.com/mercadolibre/python-sdk/tree/master/examples)
 
-```python
-params = {'access_token' : meli.access_token}
-
-  #this body will be converted into json for you
-body = {'foo'  : 'bar', 'bar' : 'foo'}
-
-response = meli.post(path="/items", body=body, params=params)
-```
-
-#### Making PUT calls
-
-```python
-params = {'access_token' : meli.access_token}
-
-  #this body will be converted into json for you
-body = {'foo'  : 'bar', 'bar' : 'foo'}
-
-response = meli.put(path="/items/123", body=body, params=params)
-```
-
-#### Making DELETE calls
-```python
-params = {'access_token' : meli.access_token}
-response = meli.delete(path="/questions/123", params=params)
-```
-
-## Examples
-
-Don't forget to check out our examples codes in the folder [examples](https://github.com/mercadolibre/python-sdk/tree/master/examples)
-
-## Community
-
-You can contact us if you have questions using the standard communication channels described in the [developer's site](http://developers.mercadolibre.com/community/)
-
-## I want to contribute!
-
-That is great! Just fork the project in github. Create a topic branch, write some code, and add some tests for your new code.
-
-Thanks for helping!
+##### Don’t forget to check out our [developer site](https://developers.mercadolibre.com/)
