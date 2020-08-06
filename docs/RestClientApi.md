@@ -4,10 +4,72 @@ All URIs are relative to *https://api.mercadolibre.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**resource_delete**](RestClientApi.md#resource_delete) | **DELETE** /{resource} | Resource path DELETE
 [**resource_get**](RestClientApi.md#resource_get) | **GET** /{resource} | Resource path GET
 [**resource_post**](RestClientApi.md#resource_post) | **POST** /{resource} | Resourse path POST
 [**resource_put**](RestClientApi.md#resource_put) | **PUT** /{resource} | Resourse path PUT
 
+
+# **resource_delete**
+> resource_delete(resource, access_token)
+
+Resource path DELETE
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import meli
+from meli.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.mercadolibre.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = meli.Configuration(
+    host = "https://api.mercadolibre.com"
+)
+
+
+# Enter a context with an instance of the API client
+with meli.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = meli.RestClientApi(api_client)
+    resource = 'resource_example' # str | 
+access_token = 'access_token_example' # str | 
+
+    try:
+        # Resource path DELETE
+        api_instance.resource_delete(resource, access_token)
+    except ApiException as e:
+        print("Exception when calling RestClientApi->resource_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource** | **str**|  | 
+ **access_token** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resource_get**
 > resource_get(resource, access_token)

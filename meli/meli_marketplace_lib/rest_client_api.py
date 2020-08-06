@@ -36,6 +36,127 @@ class RestClientApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def resource_delete(self, resource, access_token, **kwargs):  # noqa: E501
+        """Resource path DELETE  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.resource_delete(resource, access_token, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str resource: (required)
+        :param str access_token: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.resource_delete_with_http_info(resource, access_token, **kwargs)  # noqa: E501
+
+    def resource_delete_with_http_info(self, resource, access_token, **kwargs):  # noqa: E501
+        """Resource path DELETE  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.resource_delete_with_http_info(resource, access_token, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str resource: (required)
+        :param str access_token: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'resource',
+            'access_token'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method resource_delete" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'resource' is set
+        if self.api_client.client_side_validation and ('resource' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `resource` when calling `resource_delete`")  # noqa: E501
+        # verify the required parameter 'access_token' is set
+        if self.api_client.client_side_validation and ('access_token' not in local_var_params or  # noqa: E501
+                                                        local_var_params['access_token'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `access_token` when calling `resource_delete`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'resource' in local_var_params and local_var_params['resource'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `resource` when calling `resource_delete`, must be a value greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `access_token` when calling `resource_delete`, must be a value greater than or equal to `1`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'resource' in local_var_params:
+            path_params['resource'] = local_var_params['resource']  # noqa: E501
+
+        query_params = []
+        if 'access_token' in local_var_params and local_var_params['access_token'] is not None:  # noqa: E501
+            query_params.append(('access_token', local_var_params['access_token']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{resource}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def resource_get(self, resource, access_token, **kwargs):  # noqa: E501
         """Resource path GET  # noqa: E501
 
