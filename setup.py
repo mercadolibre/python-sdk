@@ -12,7 +12,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "mercadolibre-python-sdk"
+NAME = "mercadolibre_python_sdk"
 VERSION = "1.0.0"
 # To install the library, run the following
 #
