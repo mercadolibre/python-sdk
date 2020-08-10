@@ -340,55 +340,59 @@ class Configuration(object):
             },
             {
                 'url': "https://auth.mercadolibre.com.ar",
-                'description': "Authorization EndPoint for ar",
+                'description': "Authorization EndPoint for MLA",
             },
             {
                 'url': "https://auth.mercadolivre.com.br",
-                'description': "Authorization EndPoint for br",
+                'description': "Authorization EndPoint for MLB",
             },
             {
                 'url': "https://auth.mercadolibre.com.co",
-                'description': "Authorization EndPoint for co",
+                'description': "Authorization EndPoint for MCO",
             },
             {
                 'url': "https://auth.mercadolibre.com.mx",
-                'description': "Authorization EndPoint for mx",
+                'description': "Authorization EndPoint for MLM",
             },
             {
                 'url': "https://auth.mercadolibre.com.uy",
-                'description': "Authorization EndPoint for uy",
+                'description': "Authorization EndPoint for MLU",
             },
             {
                 'url': "https://auth.mercadolibre.cl",
-                'description': "Authorization EndPoint for cl",
+                'description': "Authorization EndPoint for MLC",
             },
             {
                 'url': "https://auth.mercadolibre.com.cr",
-                'description': "Authorization EndPoint for cr",
+                'description': "Authorization EndPoint for MCR",
             },
             {
                 'url': "https://auth.mercadolibre.com.ec",
-                'description': "Authorization EndPoint for ec",
+                'description': "Authorization EndPoint for MEC",
             },
             {
                 'url': "https://auth.mercadolibre.com.ve",
-                'description': "Authorization EndPoint for ve",
+                'description': "Authorization EndPoint for MLV",
             },
             {
                 'url': "https://auth.mercadolibre.com.pa",
-                'description': "Authorization EndPoint for pa",
+                'description': "Authorization EndPoint for MPA",
             },
             {
                 'url': "https://auth.mercadolibre.com.pe",
-                'description': "Authorization EndPoint for pe",
-            },
-            {
-                'url': "https://auth.mercadolibre.com.pt",
-                'description': "Authorization EndPoint for pt",
+                'description': "Authorization EndPoint for MLP",
             },
             {
                 'url': "https://auth.mercadolibre.com.do",
-                'description': "Authorization EndPoint for do",
+                'description': "Authorization EndPoint for MRD",
+            },
+            {
+                'url': "https://auth.mercadolibre.com.bo",
+                'description': "Authorization EndPoint for MBO",
+            },
+            {
+                'url': "https://auth.mercadolibre.com.py",
+                'description': "Authorization EndPoint for MPY",
             }
         ]
 

@@ -36,12 +36,12 @@ class ItemsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def items_id_get(self, id, **kwargs):  # noqa: E501
+    def items_id_get(self, **kwargs):  # noqa: E501
         """Return a Item.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_get(id, async_req=True)
+        >>> thread = api.items_id_get(id=id_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -58,14 +58,14 @@ class ItemsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.items_id_get_with_http_info(id, **kwargs)  # noqa: E501
+        return self.items_id_get_with_http_info(**kwargs)  # noqa: E501
 
-    def items_id_get_with_http_info(self, id, **kwargs):  # noqa: E501
+    def items_id_get_with_http_info(self, **kwargs):  # noqa: E501
         """Return a Item.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_get_with_http_info(id, async_req=True)
+        >>> thread = api.items_id_get_with_http_info(id=id_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -146,12 +146,12 @@ class ItemsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def items_id_put(self, id, access_token, item, **kwargs):  # noqa: E501
+    def items_id_put(self, **kwargs):  # noqa: E501
         """Update a Item.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_put(id, access_token, item, async_req=True)
+        >>> thread = api.items_id_put(id=id_value, access_token=access_token_value, item=item_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -170,14 +170,14 @@ class ItemsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.items_id_put_with_http_info(id, access_token, item, **kwargs)  # noqa: E501
+        return self.items_id_put_with_http_info(**kwargs)  # noqa: E501
 
-    def items_id_put_with_http_info(self, id, access_token, item, **kwargs):  # noqa: E501
+    def items_id_put_with_http_info(self, **kwargs):  # noqa: E501
         """Update a Item.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_put_with_http_info(id, access_token, item, async_req=True)
+        >>> thread = api.items_id_put_with_http_info(id=id_value, access_token=access_token_value, item=item_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -280,12 +280,12 @@ class ItemsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def items_post(self, access_token, item, **kwargs):  # noqa: E501
+    def items_post(self, **kwargs):  # noqa: E501
         """Create a Item.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_post(access_token, item, async_req=True)
+        >>> thread = api.items_post(access_token=access_token_value, item=item_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -303,14 +303,14 @@ class ItemsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.items_post_with_http_info(access_token, item, **kwargs)  # noqa: E501
+        return self.items_post_with_http_info(**kwargs)  # noqa: E501
 
-    def items_post_with_http_info(self, access_token, item, **kwargs):  # noqa: E501
+    def items_post_with_http_info(self, **kwargs):  # noqa: E501
         """Create a Item.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_post_with_http_info(access_token, item, async_req=True)
+        >>> thread = api.items_post_with_http_info(access_token=access_token_value, item=item_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously

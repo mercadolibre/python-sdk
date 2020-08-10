@@ -36,12 +36,12 @@ class CategoriesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def categories_category_id_get(self, category_id, **kwargs):  # noqa: E501
+    def categories_category_id_get(self, **kwargs):  # noqa: E501
         """Return by category.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.categories_category_id_get(category_id, async_req=True)
+        >>> thread = api.categories_category_id_get(category_id=category_id_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -58,14 +58,14 @@ class CategoriesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.categories_category_id_get_with_http_info(category_id, **kwargs)  # noqa: E501
+        return self.categories_category_id_get_with_http_info(**kwargs)  # noqa: E501
 
-    def categories_category_id_get_with_http_info(self, category_id, **kwargs):  # noqa: E501
+    def categories_category_id_get_with_http_info(self, **kwargs):  # noqa: E501
         """Return by category.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.categories_category_id_get_with_http_info(category_id, async_req=True)
+        >>> thread = api.categories_category_id_get_with_http_info(category_id=category_id_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -146,12 +146,12 @@ class CategoriesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def sites_site_id_categories_get(self, site_id, **kwargs):  # noqa: E501
+    def sites_site_id_categories_get(self, **kwargs):  # noqa: E501
         """Return a categories by site.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sites_site_id_categories_get(site_id, async_req=True)
+        >>> thread = api.sites_site_id_categories_get(site_id=site_id_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -168,14 +168,14 @@ class CategoriesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.sites_site_id_categories_get_with_http_info(site_id, **kwargs)  # noqa: E501
+        return self.sites_site_id_categories_get_with_http_info(**kwargs)  # noqa: E501
 
-    def sites_site_id_categories_get_with_http_info(self, site_id, **kwargs):  # noqa: E501
+    def sites_site_id_categories_get_with_http_info(self, **kwargs):  # noqa: E501
         """Return a categories by site.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sites_site_id_categories_get_with_http_info(site_id, async_req=True)
+        >>> thread = api.sites_site_id_categories_get_with_http_info(site_id=site_id_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -256,12 +256,12 @@ class CategoriesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def sites_site_id_domain_discovery_search_get(self, site_id, q, limit, **kwargs):  # noqa: E501
+    def sites_site_id_domain_discovery_search_get(self, **kwargs):  # noqa: E501
         """Predictor  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sites_site_id_domain_discovery_search_get(site_id, q, limit, async_req=True)
+        >>> thread = api.sites_site_id_domain_discovery_search_get(site_id=site_id_value, q=q_value, limit=limit_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -280,14 +280,14 @@ class CategoriesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, **kwargs)  # noqa: E501
+        return self.sites_site_id_domain_discovery_search_get_with_http_info(**kwargs)  # noqa: E501
 
-    def sites_site_id_domain_discovery_search_get_with_http_info(self, site_id, q, limit, **kwargs):  # noqa: E501
+    def sites_site_id_domain_discovery_search_get_with_http_info(self, **kwargs):  # noqa: E501
         """Predictor  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sites_site_id_domain_discovery_search_get_with_http_info(site_id, q, limit, async_req=True)
+        >>> thread = api.sites_site_id_domain_discovery_search_get_with_http_info(site_id=site_id_value, q=q_value, limit=limit_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously

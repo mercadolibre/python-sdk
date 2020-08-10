@@ -36,12 +36,12 @@ class RestClientApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def resource_delete(self, resource, access_token, **kwargs):  # noqa: E501
+    def resource_delete(self, **kwargs):  # noqa: E501
         """Resource path DELETE  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_delete(resource, access_token, async_req=True)
+        >>> thread = api.resource_delete(resource=resource_value, access_token=access_token_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -59,14 +59,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_delete_with_http_info(resource, access_token, **kwargs)  # noqa: E501
+        return self.resource_delete_with_http_info(**kwargs)  # noqa: E501
 
-    def resource_delete_with_http_info(self, resource, access_token, **kwargs):  # noqa: E501
+    def resource_delete_with_http_info(self, **kwargs):  # noqa: E501
         """Resource path DELETE  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_delete_with_http_info(resource, access_token, async_req=True)
+        >>> thread = api.resource_delete_with_http_info(resource=resource_value, access_token=access_token_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -157,12 +157,12 @@ class RestClientApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def resource_get(self, resource, access_token, **kwargs):  # noqa: E501
+    def resource_get(self, **kwargs):  # noqa: E501
         """Resource path GET  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_get(resource, access_token, async_req=True)
+        >>> thread = api.resource_get(resource=resource_value, access_token=access_token_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -180,14 +180,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_get_with_http_info(resource, access_token, **kwargs)  # noqa: E501
+        return self.resource_get_with_http_info(**kwargs)  # noqa: E501
 
-    def resource_get_with_http_info(self, resource, access_token, **kwargs):  # noqa: E501
+    def resource_get_with_http_info(self, **kwargs):  # noqa: E501
         """Resource path GET  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_get_with_http_info(resource, access_token, async_req=True)
+        >>> thread = api.resource_get_with_http_info(resource=resource_value, access_token=access_token_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -278,12 +278,12 @@ class RestClientApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def resource_post(self, resource, access_token, body, **kwargs):  # noqa: E501
+    def resource_post(self, **kwargs):  # noqa: E501
         """Resourse path POST  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_post(resource, access_token, body, async_req=True)
+        >>> thread = api.resource_post(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -302,14 +302,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_post_with_http_info(resource, access_token, body, **kwargs)  # noqa: E501
+        return self.resource_post_with_http_info(**kwargs)  # noqa: E501
 
-    def resource_post_with_http_info(self, resource, access_token, body, **kwargs):  # noqa: E501
+    def resource_post_with_http_info(self, **kwargs):  # noqa: E501
         """Resourse path POST  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_post_with_http_info(resource, access_token, body, async_req=True)
+        >>> thread = api.resource_post_with_http_info(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -412,12 +412,12 @@ class RestClientApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def resource_put(self, resource, access_token, body, **kwargs):  # noqa: E501
+    def resource_put(self, **kwargs):  # noqa: E501
         """Resourse path PUT  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_put(resource, access_token, body, async_req=True)
+        >>> thread = api.resource_put(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -436,14 +436,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_put_with_http_info(resource, access_token, body, **kwargs)  # noqa: E501
+        return self.resource_put_with_http_info(**kwargs)  # noqa: E501
 
-    def resource_put_with_http_info(self, resource, access_token, body, **kwargs):  # noqa: E501
+    def resource_put_with_http_info(self, **kwargs):  # noqa: E501
         """Resourse path PUT  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_put_with_http_info(resource, access_token, body, async_req=True)
+        >>> thread = api.resource_put_with_http_info(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
