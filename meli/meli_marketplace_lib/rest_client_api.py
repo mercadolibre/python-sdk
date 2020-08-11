@@ -36,12 +36,12 @@ class RestClientApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def resource_delete(self, **kwargs):  # noqa: E501
+    def resource_delete(self, resource, access_token, **kwargs):  # noqa: E501
         """Resource path DELETE  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_delete(resource=resource_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.resource_delete(resource, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -59,14 +59,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_delete_with_http_info(**kwargs)  # noqa: E501
+        return self.resource_delete_with_http_info(resource, access_token, **kwargs)  # noqa: E501
 
-    def resource_delete_with_http_info(self, **kwargs):  # noqa: E501
+    def resource_delete_with_http_info(self, resource, access_token, **kwargs):  # noqa: E501
         """Resource path DELETE  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_delete_with_http_info(resource=resource_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.resource_delete_with_http_info(resource, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -118,10 +118,6 @@ class RestClientApi(object):
                                                         local_var_params['access_token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `access_token` when calling `resource_delete`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'resource' in local_var_params and local_var_params['resource'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `resource` when calling `resource_delete`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `access_token` when calling `resource_delete`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -157,12 +153,12 @@ class RestClientApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def resource_get(self, **kwargs):  # noqa: E501
+    def resource_get(self, resource, access_token, **kwargs):  # noqa: E501
         """Resource path GET  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_get(resource=resource_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.resource_get(resource, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -180,14 +176,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_get_with_http_info(**kwargs)  # noqa: E501
+        return self.resource_get_with_http_info(resource, access_token, **kwargs)  # noqa: E501
 
-    def resource_get_with_http_info(self, **kwargs):  # noqa: E501
+    def resource_get_with_http_info(self, resource, access_token, **kwargs):  # noqa: E501
         """Resource path GET  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_get_with_http_info(resource=resource_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.resource_get_with_http_info(resource, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -239,10 +235,6 @@ class RestClientApi(object):
                                                         local_var_params['access_token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `access_token` when calling `resource_get`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'resource' in local_var_params and local_var_params['resource'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `resource` when calling `resource_get`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `access_token` when calling `resource_get`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -278,12 +270,12 @@ class RestClientApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def resource_post(self, **kwargs):  # noqa: E501
+    def resource_post(self, resource, access_token, body, **kwargs):  # noqa: E501
         """Resourse path POST  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_post(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
+        >>> thread = api.resource_post(resource, access_token, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -302,14 +294,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_post_with_http_info(**kwargs)  # noqa: E501
+        return self.resource_post_with_http_info(resource, access_token, body, **kwargs)  # noqa: E501
 
-    def resource_post_with_http_info(self, **kwargs):  # noqa: E501
+    def resource_post_with_http_info(self, resource, access_token, body, **kwargs):  # noqa: E501
         """Resourse path POST  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_post_with_http_info(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
+        >>> thread = api.resource_post_with_http_info(resource, access_token, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -367,10 +359,6 @@ class RestClientApi(object):
                                                         local_var_params['body'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `body` when calling `resource_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'resource' in local_var_params and local_var_params['resource'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `resource` when calling `resource_post`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `access_token` when calling `resource_post`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -412,12 +400,12 @@ class RestClientApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def resource_put(self, **kwargs):  # noqa: E501
+    def resource_put(self, resource, access_token, body, **kwargs):  # noqa: E501
         """Resourse path PUT  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_put(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
+        >>> thread = api.resource_put(resource, access_token, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -436,14 +424,14 @@ class RestClientApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.resource_put_with_http_info(**kwargs)  # noqa: E501
+        return self.resource_put_with_http_info(resource, access_token, body, **kwargs)  # noqa: E501
 
-    def resource_put_with_http_info(self, **kwargs):  # noqa: E501
+    def resource_put_with_http_info(self, resource, access_token, body, **kwargs):  # noqa: E501
         """Resourse path PUT  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.resource_put_with_http_info(resource=resource_value, access_token=access_token_value, body=body_value, async_req=True)
+        >>> thread = api.resource_put_with_http_info(resource, access_token, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -501,10 +489,6 @@ class RestClientApi(object):
                                                         local_var_params['body'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `body` when calling `resource_put`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'resource' in local_var_params and local_var_params['resource'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `resource` when calling `resource_put`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `access_token` when calling `resource_put`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

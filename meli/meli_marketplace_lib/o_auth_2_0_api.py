@@ -36,12 +36,12 @@ class OAuth20Api(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def auth(self, **kwargs):  # noqa: E501
+    def auth(self, response_type, client_id, redirect_uri, **kwargs):  # noqa: E501
         """Authentication Endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.auth(response_type=response_type_value, client_id=client_id_value, redirect_uri=redirect_uri_value, async_req=True)
+        >>> thread = api.auth(response_type, client_id, redirect_uri, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -60,14 +60,14 @@ class OAuth20Api(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.auth_with_http_info(**kwargs)  # noqa: E501
+        return self.auth_with_http_info(response_type, client_id, redirect_uri, **kwargs)  # noqa: E501
 
-    def auth_with_http_info(self, **kwargs):  # noqa: E501
+    def auth_with_http_info(self, response_type, client_id, redirect_uri, **kwargs):  # noqa: E501
         """Authentication Endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.auth_with_http_info(response_type=response_type_value, client_id=client_id_value, redirect_uri=redirect_uri_value, async_req=True)
+        >>> thread = api.auth_with_http_info(response_type, client_id, redirect_uri, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
