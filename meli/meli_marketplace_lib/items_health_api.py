@@ -36,12 +36,12 @@ class ItemsHealthApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def items_id_health_actions_get(self, **kwargs):  # noqa: E501
+    def items_id_health_actions_get(self, id, access_token, **kwargs):  # noqa: E501
         """Return item health actions by id.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_health_actions_get(id=id_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.items_id_health_actions_get(id, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -59,14 +59,14 @@ class ItemsHealthApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.items_id_health_actions_get_with_http_info(**kwargs)  # noqa: E501
+        return self.items_id_health_actions_get_with_http_info(id, access_token, **kwargs)  # noqa: E501
 
-    def items_id_health_actions_get_with_http_info(self, **kwargs):  # noqa: E501
+    def items_id_health_actions_get_with_http_info(self, id, access_token, **kwargs):  # noqa: E501
         """Return item health actions by id.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_health_actions_get_with_http_info(id=id_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.items_id_health_actions_get_with_http_info(id, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -118,10 +118,6 @@ class ItemsHealthApi(object):
                                                         local_var_params['access_token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `access_token` when calling `items_id_health_actions_get`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `id` when calling `items_id_health_actions_get`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `access_token` when calling `items_id_health_actions_get`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -157,12 +153,12 @@ class ItemsHealthApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def items_id_health_get(self, **kwargs):  # noqa: E501
+    def items_id_health_get(self, id, access_token, **kwargs):  # noqa: E501
         """Return health by id.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_health_get(id=id_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.items_id_health_get(id, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -180,14 +176,14 @@ class ItemsHealthApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.items_id_health_get_with_http_info(**kwargs)  # noqa: E501
+        return self.items_id_health_get_with_http_info(id, access_token, **kwargs)  # noqa: E501
 
-    def items_id_health_get_with_http_info(self, **kwargs):  # noqa: E501
+    def items_id_health_get_with_http_info(self, id, access_token, **kwargs):  # noqa: E501
         """Return health by id.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.items_id_health_get_with_http_info(id=id_value, access_token=access_token_value, async_req=True)
+        >>> thread = api.items_id_health_get_with_http_info(id, access_token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -239,10 +235,6 @@ class ItemsHealthApi(object):
                                                         local_var_params['access_token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `access_token` when calling `items_id_health_get`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'id' in local_var_params and local_var_params['id'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `id` when calling `items_id_health_get`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'access_token' in local_var_params and local_var_params['access_token'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `access_token` when calling `items_id_health_get`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -278,12 +270,12 @@ class ItemsHealthApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def sites_site_id_health_levels_get(self, **kwargs):  # noqa: E501
+    def sites_site_id_health_levels_get(self, site_id, **kwargs):  # noqa: E501
         """Return health levels.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sites_site_id_health_levels_get(site_id=site_id_value, async_req=True)
+        >>> thread = api.sites_site_id_health_levels_get(site_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -300,14 +292,14 @@ class ItemsHealthApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.sites_site_id_health_levels_get_with_http_info(**kwargs)  # noqa: E501
+        return self.sites_site_id_health_levels_get_with_http_info(site_id, **kwargs)  # noqa: E501
 
-    def sites_site_id_health_levels_get_with_http_info(self, **kwargs):  # noqa: E501
+    def sites_site_id_health_levels_get_with_http_info(self, site_id, **kwargs):  # noqa: E501
         """Return health levels.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sites_site_id_health_levels_get_with_http_info(site_id=site_id_value, async_req=True)
+        >>> thread = api.sites_site_id_health_levels_get_with_http_info(site_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -353,8 +345,6 @@ class ItemsHealthApi(object):
                                                         local_var_params['site_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `site_id` when calling `sites_site_id_health_levels_get`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'site_id' in local_var_params and local_var_params['site_id'] < 1:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `site_id` when calling `sites_site_id_health_levels_get`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
