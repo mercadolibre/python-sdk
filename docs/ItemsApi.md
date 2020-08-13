@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **items_id_get**
-> items_id_get(id)
+> object items_id_get(id)
 
 Return a Item.
 
@@ -37,7 +37,8 @@ with meli.ApiClient() as api_client:
 
     try:
         # Return a Item.
-        api_instance.items_id_get(id)
+        api_response = api_instance.items_id_get(id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ItemsApi->items_id_get: %s\n" % e)
 ```
@@ -50,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -59,17 +60,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_id_put**
-> items_id_put(id, access_token, item)
+> object items_id_put(id, access_token, item)
 
 Update a Item.
 
@@ -98,7 +99,8 @@ item = meli.Item() # Item |
 
     try:
         # Update a Item.
-        api_instance.items_id_put(id, access_token, item)
+        api_response = api_instance.items_id_put(id, access_token, item)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ItemsApi->items_id_put: %s\n" % e)
 ```
@@ -113,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -122,17 +124,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_post**
-> items_post(access_token, item)
+> object items_post(access_token, item)
 
 Create a Item.
 
@@ -160,7 +162,8 @@ item = meli.Item() # Item |
 
     try:
         # Create a Item.
-        api_instance.items_post(access_token, item)
+        api_response = api_instance.items_post(access_token, item)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ItemsApi->items_post: %s\n" % e)
 ```
@@ -174,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -183,12 +186,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

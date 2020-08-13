@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **resource_delete**
-> resource_delete(resource, access_token)
+> object resource_delete(resource, access_token)
 
 Resource path DELETE
 
@@ -39,7 +39,8 @@ access_token = 'access_token_example' # str |
 
     try:
         # Resource path DELETE
-        api_instance.resource_delete(resource, access_token)
+        api_response = api_instance.resource_delete(resource, access_token)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling RestClientApi->resource_delete: %s\n" % e)
 ```
@@ -53,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -62,17 +63,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resource_get**
-> resource_get(resource, access_token)
+> object resource_get(resource, access_token)
 
 Resource path GET
 
@@ -100,7 +101,8 @@ access_token = 'access_token_example' # str |
 
     try:
         # Resource path GET
-        api_instance.resource_get(resource, access_token)
+        api_response = api_instance.resource_get(resource, access_token)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling RestClientApi->resource_get: %s\n" % e)
 ```
@@ -114,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -123,17 +125,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resource_post**
-> resource_post(resource, access_token, body)
+> object resource_post(resource, access_token, body)
 
 Resourse path POST
 
@@ -162,7 +164,8 @@ body = None # object |
 
     try:
         # Resourse path POST
-        api_instance.resource_post(resource, access_token, body)
+        api_response = api_instance.resource_post(resource, access_token, body)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling RestClientApi->resource_post: %s\n" % e)
 ```
@@ -177,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -186,17 +189,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resource_put**
-> resource_put(resource, access_token, body)
+> object resource_put(resource, access_token, body)
 
 Resourse path PUT
 
@@ -225,7 +228,8 @@ body = None # object |
 
     try:
         # Resourse path PUT
-        api_instance.resource_put(resource, access_token, body)
+        api_response = api_instance.resource_put(resource, access_token, body)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling RestClientApi->resource_put: %s\n" % e)
 ```
@@ -240,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -249,12 +253,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
