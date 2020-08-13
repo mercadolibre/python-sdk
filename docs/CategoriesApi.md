@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **categories_category_id_get**
-> categories_category_id_get(category_id)
+> object categories_category_id_get(category_id)
 
 Return by category.
 
@@ -37,7 +37,8 @@ with meli.ApiClient() as api_client:
 
     try:
         # Return by category.
-        api_instance.categories_category_id_get(category_id)
+        api_response = api_instance.categories_category_id_get(category_id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling CategoriesApi->categories_category_id_get: %s\n" % e)
 ```
@@ -50,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -59,17 +60,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sites_site_id_categories_get**
-> sites_site_id_categories_get(site_id)
+> object sites_site_id_categories_get(site_id)
 
 Return a categories by site.
 
@@ -96,7 +97,8 @@ with meli.ApiClient() as api_client:
 
     try:
         # Return a categories by site.
-        api_instance.sites_site_id_categories_get(site_id)
+        api_response = api_instance.sites_site_id_categories_get(site_id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling CategoriesApi->sites_site_id_categories_get: %s\n" % e)
 ```
@@ -109,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -118,17 +120,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sites_site_id_domain_discovery_search_get**
-> sites_site_id_domain_discovery_search_get(site_id, q, limit)
+> object sites_site_id_domain_discovery_search_get(site_id, q, limit)
 
 Predictor
 
@@ -157,7 +159,8 @@ limit = 'limit_example' # str |
 
     try:
         # Predictor
-        api_instance.sites_site_id_domain_discovery_search_get(site_id, q, limit)
+        api_response = api_instance.sites_site_id_domain_discovery_search_get(site_id, q, limit)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling CategoriesApi->sites_site_id_domain_discovery_search_get: %s\n" % e)
 ```
@@ -172,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -181,12 +184,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

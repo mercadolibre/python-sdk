@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **items_id_health_actions_get**
-> items_id_health_actions_get(id, access_token)
+> object items_id_health_actions_get(id, access_token)
 
 Return item health actions by id.
 
@@ -38,7 +38,8 @@ access_token = 'access_token_example' # str |
 
     try:
         # Return item health actions by id.
-        api_instance.items_id_health_actions_get(id, access_token)
+        api_response = api_instance.items_id_health_actions_get(id, access_token)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ItemsHealthApi->items_id_health_actions_get: %s\n" % e)
 ```
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -61,17 +62,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **items_id_health_get**
-> items_id_health_get(id, access_token)
+> object items_id_health_get(id, access_token)
 
 Return health by id.
 
@@ -99,7 +100,8 @@ access_token = 'access_token_example' # str |
 
     try:
         # Return health by id.
-        api_instance.items_id_health_get(id, access_token)
+        api_response = api_instance.items_id_health_get(id, access_token)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ItemsHealthApi->items_id_health_get: %s\n" % e)
 ```
@@ -113,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -122,17 +124,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sites_site_id_health_levels_get**
-> sites_site_id_health_levels_get(site_id)
+> object sites_site_id_health_levels_get(site_id)
 
 Return health levels.
 
@@ -159,7 +161,8 @@ with meli.ApiClient() as api_client:
 
     try:
         # Return health levels.
-        api_instance.sites_site_id_health_levels_get(site_id)
+        api_response = api_instance.sites_site_id_health_levels_get(site_id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling ItemsHealthApi->sites_site_id_health_levels_get: %s\n" % e)
 ```
@@ -172,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -181,12 +184,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
