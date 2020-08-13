@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import meli
-from meli_marketplace_lib.items_health_api import ItemsHealthApi  # noqa: E501
+from meli.api.items_health_api import ItemsHealthApi  # noqa: E501
 from meli.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestItemsHealthApi(unittest.TestCase):
     """ItemsHealthApi unit test stubs"""
 
     def setUp(self):
-        self.api = meli_marketplace_lib.items_health_api.ItemsHealthApi()  # noqa: E501
+        self.api = meli.api.items_health_api.ItemsHealthApi()  # noqa: E501
 
     def tearDown(self):
         pass
