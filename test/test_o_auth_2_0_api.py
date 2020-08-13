@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import meli
-from meli_marketplace_lib.o_auth_2_0_api import OAuth20Api  # noqa: E501
+from meli.api.o_auth_2_0_api import OAuth20Api  # noqa: E501
 from meli.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestOAuth20Api(unittest.TestCase):
     """OAuth20Api unit test stubs"""
 
     def setUp(self):
-        self.api = meli_marketplace_lib.o_auth_2_0_api.OAuth20Api()  # noqa: E501
+        self.api = meli.api.o_auth_2_0_api.OAuth20Api()  # noqa: E501
 
     def tearDown(self):
         pass

@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import meli
-from meli_marketplace_lib.rest_client_api import RestClientApi  # noqa: E501
+from meli.api.rest_client_api import RestClientApi  # noqa: E501
 from meli.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestRestClientApi(unittest.TestCase):
     """RestClientApi unit test stubs"""
 
     def setUp(self):
-        self.api = meli_marketplace_lib.rest_client_api.RestClientApi()  # noqa: E501
+        self.api = meli.api.rest_client_api.RestClientApi()  # noqa: E501
 
     def tearDown(self):
         pass

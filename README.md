@@ -77,9 +77,7 @@ with meli.ApiClient() as api_client:
 
 ##### The URIs are relative to https://api.mercadolibre.com
 
-##### The Authorization URLs:
-###### Remember set your correct country ID
-###### https://auth.mercadolibre.{country_domain}
+##### The Authorization URLs (set the correct country domain): https://auth.mercadolibre.{country_domain}
 
 #####  All docs for the library are located [here](https://github.com/mercadolibre/python-sdk/tree/master/docs)
 
