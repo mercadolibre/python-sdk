@@ -48,6 +48,38 @@ import meli
 ## Usage
 
 ```python
+# Auth URLs Options by country
+
+# 1:  "https://auth.mercadolibre.com.ar"
+# 2:  "https://auth.mercadolivre.com.br"
+# 3:  "https://auth.mercadolibre.com.co"
+# 4:  "https://auth.mercadolibre.com.mx"
+# 5:  "https://auth.mercadolibre.com.uy"
+# 6:  "https://auth.mercadolibre.cl"
+# 7:  "https://auth.mercadolibre.com.cr"
+# 8:  "https://auth.mercadolibre.com.ec"
+# 9:  "https://auth.mercadolibre.com.ve"
+# 10: "https://auth.mercadolibre.com.pa"
+# 11: "https://auth.mercadolibre.com.pe"
+# 12: "https://auth.mercadolibre.com.do"
+# 13: "https://auth.mercadolibre.com.bo"
+# 14: "https://auth.mercadolibre.com.py"
+
+# For example in your app, you can make some like this to get de auth
+import urllib
+
+params = urllib.urlencode({'response_type':'code', 'client_id':'your_client_id', 'redirect_uri':'your_redirect_uri'})
+f = urllib.urlopen("https://auth.mercadolibre.com.ar/authorization?%s" % params)
+print f.geturl()
+```
+his will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
+
+Once the user is redirected to your callback url, you'll receive in the query string, a parameter named code. You'll need this for the second part of the process
+
+
+## Examples for OAuth - get token
+
+```python
 from __future__ import print_function
 import time
 import meli
@@ -63,14 +95,51 @@ configuration = meli.Configuration(
 # Enter a context with an instance of the API client
 with meli.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = meli.ItemsApi(api_client)
-    id = 'id_example' # str | 
+    api_instance = meli.OAuth20Api(api_client)
+    grant_type = 'grant_type_example' # str |  (optional)
+client_id = 'client_id_example' # str |  (optional)
+client_secret = 'client_secret_example' # str |  (optional)
+redirect_uri = 'redirect_uri_example' # str |  (optional)
+code = 'code_example' # str |  (optional)
+refresh_token = 'refresh_token_example' # str |  (optional)
 
     try:
-        # Return a Item.
-        api_instance.items_id_get(id)
+        # Request Access Token
+        api_response = api_instance.get_token(grant_type=grant_type, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, code=code, refresh_token=refresh_token)
+        pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ItemsApi->items_id_get: %s\n" % e)
+        print("Exception when calling OAuth20Api->get_token: %s\n" % e)
+```
+
+
+## Example using the RestClient with a POST Item
+```python
+from __future__ import print_function
+import time
+import meli
+from meli.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.mercadolibre.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = meli.Configuration(
+    host = "https://api.mercadolibre.com"
+)
+
+
+# Enter a context with an instance of the API client
+with meli.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = meli.RestClientApi(api_client)
+    resource = 'resource_example' # str | 
+access_token = 'access_token_example' # str | 
+body = None # object | 
+
+    try:
+        # Resourse path POST
+        api_response = api_instance.resource_post(resource, access_token, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling RestClientApi->resource_post: %s\n" % e)
 ```
 
 ## Documentation & Important notes
