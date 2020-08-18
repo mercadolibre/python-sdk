@@ -85,7 +85,7 @@ import time
 import meli
 from meli.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.mercadolibre.com
+# Defining the host, defaults to https://api.mercadolibre.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = meli.Configuration(
     host = "https://api.mercadolibre.com"
@@ -94,21 +94,21 @@ configuration = meli.Configuration(
 
 # Enter a context with an instance of the API client
 with meli.ApiClient() as api_client:
-    # Create an instance of the API class
+# Create an instance of the API class
     api_instance = meli.OAuth20Api(api_client)
-    grant_type = 'grant_type_example' # str |  (optional)
-client_id = 'client_id_example' # str |  (optional)
-client_secret = 'client_secret_example' # str |  (optional)
-redirect_uri = 'redirect_uri_example' # str |  (optional)
-code = 'code_example' # str |  (optional)
-refresh_token = 'refresh_token_example' # str |  (optional)
+    grant_type = 'authorization_code' # str
+    client_id = 'client_id_example' # Your client_id
+    client_secret = 'client_secret_example' # Your client_secret
+    redirect_uri = 'redirect_uri_example' # Your redirect_uri
+    code = 'code_example' # The parameter CODE
+    refresh_token = 'refresh_token_example' # Your refresh_token
 
-    try:
-        # Request Access Token
-        api_response = api_instance.get_token(grant_type=grant_type, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, code=code, refresh_token=refresh_token)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling OAuth20Api->get_token: %s\n" % e)
+try:
+    # Request Access Token
+    api_response = api_instance.get_token(grant_type=grant_type, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, code=code, refresh_token=refresh_token)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OAuth20Api->get_token: %s\n" % e)
 ```
 
 
@@ -119,7 +119,7 @@ import time
 import meli
 from meli.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.mercadolibre.com
+# Defining the host, defaults to https://api.mercadolibre.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = meli.Configuration(
     host = "https://api.mercadolibre.com"
@@ -130,68 +130,68 @@ configuration = meli.Configuration(
 with meli.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = meli.RestClientApi(api_client)
-    resource = 'resource_example' # str | 
-    access_token = 'access_token_example' # str | 
+    resource = 'resource_example' # A resource like items, search, etc
+    access_token = 'access_token_example' # Your access token
 
-    # Body example for Argentina
+    # A body example to post a item in Argentina
     body = {
-  "title": "Item de test - No Ofertar",
-  "category_id": "MLA5991",
-  "price": "350",
-  "currency_id": "ARS",
-  "available_quantity": "12",
-  "buying_mode": "buy_it_now",
-  "listing_type_id": "bronze",
-  "condition": "new",
-  "description": "Item de Teste. Mercado Livre SDK",
-  "video_id": "RXWn6kftTHY",
-  "pictures": [
-    {
-      "source": "https://http2.mlstatic.com/storage/developers-site-cms-admin/openapi/319968615067-mp3.jpg"
-    }
-  ],
-  "attributes": [
-    {
-      "id": "DATA_STORAGE_CAPACITY",
-      "name": "Capacidad de almacenamiento de datos",
-      "value_id": "null",
-      "value_name": "8 GB",
-      "value_struct": {
-        "number": 8,
-        "unit": "GB"
-      },
-      "values": [
+      "title": "Item de test - No Ofertar",
+      "category_id": "MLA5991",
+      "price": "350",
+      "currency_id": "ARS",
+      "available_quantity": "12",
+      "buying_mode": "buy_it_now",
+      "listing_type_id": "bronze",
+      "condition": "new",
+      "description": "Item de Teste. Mercado Livre SDK",
+      "video_id": "RXWn6kftTHY",
+      "pictures": [
         {
-          "id": "null",
-          "name": "8 GB",
-          "struct": {
+          "source": "https://http2.mlstatic.com/storage/developers-site-cms-admin/openapi/319968615067-mp3.jpg"
+        }
+      ],
+      "attributes": [
+        {
+          "id": "DATA_STORAGE_CAPACITY",
+          "name": "Capacidad de almacenamiento de datos",
+          "value_id": "null",
+          "value_name": "8 GB",
+          "value_struct": {
             "number": 8,
             "unit": "GB"
-          }
+          },
+          "values": [
+            {
+              "id": "null",
+              "name": "8 GB",
+              "struct": {
+                "number": 8,
+                "unit": "GB"
+              }
+            }
+          ],
+          "attribute_group_id": "OTHERS",
+          "attribute_group_name": "Otros"
         }
       ],
-      "attribute_group_id": "OTHERS",
-      "attribute_group_name": "Otros"
-    }
-  ],
-  "variations": [
-    {
-      "price": 350,
-      "attribute_combinations": [
+      "variations": [
         {
-          "name": "Color",
-          "value_id": "283165",
-          "value_name": "Gris"
+          "price": 350,
+          "attribute_combinations": [
+            {
+              "name": "Color",
+              "value_id": "283165",
+              "value_name": "Gris"
+            }
+          ],
+          "available_quantity": 2,
+          "sold_quantity": 0,
+          "picture_ids": [
+            "882629-MLA40983876214_032020"
+          ]
         }
-      ],
-      "available_quantity": 2,
-      "sold_quantity": 0,
-      "picture_ids": [
-        "882629-MLA40983876214_032020"
       ]
     }
-  ]
-}
 
     try:
         # Resourse path POST
