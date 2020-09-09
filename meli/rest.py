@@ -151,11 +151,24 @@ class RESTClientObject(object):
         if 'Content-Type' not in headers:
             headers['Content-Type'] = 'application/json'
 
+        encode_url = url
+        url=url.replace('%3F','?')
+        url=url.replace('%3D','=')
+        url=url.replace('%26','&')
+        url=url.replace('%7B','{')
+        url=url.replace('%7D','}')
+        url=url.replace('%2C',',')
+        already_querys = (encode_url == url)
+        url=url.replace('%2F','/')
+
         try:
             # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
             if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:
                 if query_params:
-                    url += '?' + urlencode(query_params)
+                    if already_querys:
+                        url += '?' + urlencode(query_params)
+                    else:
+                        url += '&' + urlencode(query_params)
                 if re.search('json', headers['Content-Type'], re.IGNORECASE):
                     request_body = None
                     if body is not None:
@@ -205,8 +218,11 @@ class RESTClientObject(object):
                     raise ApiException(status=0, reason=msg)
             # For `GET`, `HEAD`
             else:
+                if already_querys:
+                    url += '?' + urlencode(query_params)
+                else:
+                    url += '&' + urlencode(query_params)
                 r = self.pool_manager.request(method, url,
-                                              fields=query_params,
                                               preload_content=_preload_content,
                                               timeout=timeout,
                                               headers=headers)
