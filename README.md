@@ -1,4 +1,20 @@
+![No longer maintained](https://img.shields.io/badge/Maintenance-OFF-red.svg)
 
+### [DEPRECATED] This repository is no longer maintained
+
+> From the first week of April 2021 we will stop maintaining our SDKs.
+>
+> This project is not functional, the dependencies will not be updated to latest ones.
+>
+> We recommend you read our [documentation](https://developers.mercadolibre.com).
+
+  <a href="https://developers.mercadolibre.com">
+    <img src="https://user-images.githubusercontent.com/1153516/73021269-043c2d80-3e06-11ea-8d0e-6e91441c2900.png" alt="Mercado Libre Developers" width="200"></a>
+  </a>
+
+---
+
+<br>
 <h1 align="center">
   <a href="https://developers.mercadolibre.com">
     <img src="https://user-images.githubusercontent.com/1153516/29861072-689ec57e-8d3e-11e7-8368-dd923543258f.jpg" alt="Mercado Libre Developers" width="230"></a>
@@ -9,7 +25,6 @@
 </h1>
 
 <h4 align="center">This is the official Python SDK for MercadoLibre's Platform.</h4>
-
 
 ## Requirements.
 
@@ -24,9 +39,11 @@ If the python package is hosted on a repository, you can install directly using:
 ```sh
 pip install git+https://github.com/mercadolibre/python-sdk.git
 ```
+
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com/mercadolibre/python-sdk.git`)
 
 Then import the package:
+
 ```python
 import meli
 ```
@@ -38,9 +55,11 @@ Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 ```sh
 python setup.py install --user
 ```
+
 (or `sudo python setup.py install` to install the package for all users)
 
 Then import the package:
+
 ```python
 import meli
 ```
@@ -72,10 +91,10 @@ params = urllib.urlencode({'response_type':'code', 'client_id':'your_client_id',
 f = urllib.urlopen("https://auth.mercadolibre.com.ar/authorization?%s" % params)
 print f.geturl()
 ```
+
 his will give you the url to redirect the user. You need to specify a callback url which will be the one that the user will redirected after a successfull authrization process.
 
 Once the user is redirected to your callback url, you'll receive in the query string, a parameter named code. You'll need this for the second part of the process
-
 
 ## Examples for OAuth - get token
 
@@ -111,8 +130,8 @@ except ApiException as e:
     print("Exception when calling OAuth20Api->get_token: %s\n" % e)
 ```
 
-
 ## Example using the RestClient with a POST Item
+
 ```python
 from __future__ import print_function
 import time
@@ -207,8 +226,8 @@ with meli.ApiClient() as api_client:
 
 ##### The Authorization URLs (set the correct country domain): https://auth.mercadolibre.{country_domain}
 
-#####  All docs for the library are located [here](https://github.com/mercadolibre/python-sdk/tree/master/docs)
+##### All docs for the library are located [here](https://github.com/mercadolibre/python-sdk/tree/master/docs)
 
-#####  Check out our examples codes in the folder [examples](https://github.com/mercadolibre/python-sdk/tree/master/examples)
+##### Check out our examples codes in the folder [examples](https://github.com/mercadolibre/python-sdk/tree/master/examples)
 
 ##### Don’t forget to check out our [developer site](https://developers.mercadolibre.com/)
