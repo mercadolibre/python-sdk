@@ -526,6 +526,14 @@ class ApiClient(object):
         else:
             return content_types[0]
 
+    def get_header_authorization(self, access_token):
+        """Returns `Authorization` header formatted as .
+
+        :param access_token: Access token to be formatted.
+        :return: Authorization Header (e.g. Bearer: access_token).
+        """
+        return f"Bearer {access_token}"
+
     def update_params_for_auth(self, headers, querys, auth_settings):
         """Updates header and query params based on authentication setting.
 
