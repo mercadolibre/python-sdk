@@ -527,7 +527,7 @@ class ApiClient(object):
             return content_types[0]
 
     def get_header_authorization(self, access_token):
-        """Returns `Authorization` header formatted as .
+        """Returns `Authorization` header formatted as required.
 
         :param access_token: Access token to be formatted.
         :return: Authorization Header (e.g. Bearer: access_token).
